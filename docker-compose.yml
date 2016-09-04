@@ -1,0 +1,15 @@
+db:
+  image: postgres
+web:
+  build: .
+  environment:
+    - PROJECT_ENV=development_docker
+    - PYTHONPATH=/code/server/
+    - DJANGO_SETTINGS_MODULE=settings.development_docker
+  command: python server/manage.py runserver 0.0.0.0:8000
+  volumes:
+    - .:/code
+  ports:
+    - "8000:8000"
+  links:
+    - db
