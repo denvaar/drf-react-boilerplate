@@ -1,0 +1,14 @@
+{% load staticfiles %}
+{% load render_bundle from webpack_loader %}
+
+<html>
+  <head>
+    <title>Project</title>
+  </head>
+  <body>
+    <p>Served from Django.</p>
+    <div id="app"></div>
+    {% render_bundle 'main' 'js' %}
+  </body>
+</html>
+
