@@ -1,5 +1,6 @@
 db:
   image: postgres
+
 web:
   build: .
   environment:
