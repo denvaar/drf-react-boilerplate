@@ -3,3 +3,14 @@
   font-weight: 700;
   color: #343d46;
 }
+
+.init {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}

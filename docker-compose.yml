@@ -1,16 +1,29 @@
-db:
-  image: postgres
+version: '2'
 
-web:
-  build: .
-  environment:
-    - PROJECT_ENV=development_docker
-    - PYTHONPATH=/code/server/
-    - DJANGO_SETTINGS_MODULE=settings.development_docker
-  command: python server/manage.py runserver 0.0.0.0:8000
-  volumes:
-    - .:/code
-  ports:
-    - "8000:8000"
-  links:
-    - db
+services:
+    client:
+      image: node:6.3
+      working_dir: /project/client
+      command: npm start
+      ports:
+        - "8080:8080"
+      volumes:
+        - ./client:/project/client
+
+    db:
+      image: postgres
+
+    server:
+      build: .
+      environment:
+        - PROJECT_ENV=development_docker
+        - PYTHONPATH=/code/server/
+        - DJANGO_SETTINGS_MODULE=settings.development_docker
+      command: python server/manage.py runserver 0.0.0.0:8000
+      volumes:
+        - .:/code
+      ports:
+        - "8000:8000"
+      links:
+        - db
+        - client
