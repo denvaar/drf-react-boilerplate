@@ -1,20 +1,34 @@
+var path = require('path');
+var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var BundleTracker = require('webpack-bundle-tracker')
 
 module.exports = {
+  context: __dirname,
   entry: [
-    './src/app.js'
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/only-dev-server',
+    './assets/js/index'
+    //'./src/app.js'
   ],
   output: {
-    path: __dirname,
-    publicPath: '/',
-    filename: 'bundle.js'
+    path: path.resolve('./assets/bundles/'),
+    filename: '[name]-[hash].js',
+    //path: __dirname,
+    publicPath: 'http://localhost:3000/assets/bundles/',
+    //filename: 'bundle.js'
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new BundleTracker({filename: './webpack.stats.json'}),
+  ],
   module: {
     loaders: [
       {
+      test: /\.jsx?$/,
       exclude: /node_modules/,
-      loader: 'babel',
-      query: { presets: ['es2015', 'react'] }
+      loaders: ['react-hot-loader/webpack', 'babel-loader?presets[]=es2015,presets[]=react'],
       },
       {
         test: /\.scss$/,

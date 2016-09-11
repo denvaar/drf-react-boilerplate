@@ -123,7 +123,9 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     
     'rest_framework',
-    'django_js_reverse', # not sure I want this.
+    'webpack_loader',
+
+    'apps.core',
 )
 
 REST_FRAMEWORK = {
@@ -143,6 +145,21 @@ REST_FRAMEWORK = {
     }
 
 }
+
+# We do this so that django's collectstatic copies 
+# our bundles to the STATIC_ROOT or syncs them to
+# whatever storage we use.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'assets'),
+)
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, '../client/webpack.stats.json'),
+    }
+}
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

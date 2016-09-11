@@ -4,9 +4,9 @@ services:
     client:
       image: node:6.3
       working_dir: /project/client
-      command: npm start
+      command: node server.js
       ports:
-        - "8080:8080"
+        - "3000:3000"
       volumes:
         - ./client:/project/client
 
