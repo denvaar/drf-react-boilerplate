@@ -22,19 +22,20 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new BundleTracker({filename: './webpack.stats.json'}),
+    new ExtractTextPlugin('style.css'),
   ],
   module: {
     loaders: [
       {
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loaders: ['react-hot-loader/webpack', 'babel-loader?presets[]=es2015,presets[]=react'],
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loaders: ['react-hot-loader/webpack', 'babel-loader?presets[]=es2015,presets[]=react'],
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         loader: ExtractTextPlugin.extract(
           'style',
-          'css!sass'
+          'css-loader!sass'
         )
       },
       {

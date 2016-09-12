@@ -1,22 +1,25 @@
 import React from 'react';
 import { Component } from 'react';
 
+import ReactImg from '../../reactjs.png';
+import ReduxImg from '../../redux.png';
+import WebpackImg from '../../webpack.png';
+import DRFImg from '../../drf.png';
+import DockerImg from '../../docker.png';
+
 export default class App extends Component {
   render() {
     return (
       <div className="init">
-        <h1>DRF-React-Boilerplate</h1>
+        <img height="70px" src={ReactImg}></img>
         <br/>
+        <img height="60px" src={ReduxImg}></img>
         <br/>
-        <img height="70px" src="./reactjs.png"></img>
+        <img height="135px" src={WebpackImg}></img>
         <br/>
-        <img height="60px" src="./redux.png"></img>
+        <img height="130px" src={DRFImg}></img>
         <br/>
-        <img height="135px" src="./webpack.png"></img>
-        <br/>
-        <img height="130px" src="./drf.png"></img>
-        <br/>
-        <img height="90px" src="./docker.png"></img>
+        <img height="90px" src={DockerImg}></img>
       </div>
     );
   }
