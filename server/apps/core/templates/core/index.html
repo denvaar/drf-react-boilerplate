@@ -5,7 +5,9 @@
     <title>Project</title>
   </head>
   <body>
-    <h2 style="color:#fff;background:#0C3C26;text-align:center">Django</h2>
+    <p><i>Python {{ python_version }}</i></p>
+    <p><i>Django {{ django_version }}</i></p>
+    <p><i>Django REST Framework {{ drf_version }}</i></p>
     <div id="app"></div>
     {% render_bundle 'main' %}
   </body>
