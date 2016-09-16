@@ -1,11 +1,13 @@
 import axios from 'axios';
 
 export const DEMO = 'DEMO';
+let nextId = 0;
 
-const demoAction = () => {
+export const demoAction = (text) => {
   return {
     type: DEMO,
-    payload: 'hello world'
+    text: text,
+    id: nextId++
   };
 }
 

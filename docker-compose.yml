@@ -2,7 +2,7 @@ version: '2'
 
 services:
     client:
-      image: node:6.3
+      build: client
       working_dir: /project/client
       command: node server.js
       ports:
@@ -14,7 +14,7 @@ services:
       image: postgres
 
     server:
-      build: .
+      build: server
       environment:
         - PROJECT_ENV=development_docker
         - PYTHONPATH=/code/server/
