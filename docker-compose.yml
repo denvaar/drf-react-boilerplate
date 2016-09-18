@@ -9,7 +9,7 @@ services:
         - "3000:3000"
       volumes:
         - ./client:/project/client
-
+        - /project/client/node_modules
     db:
       image: postgres
 

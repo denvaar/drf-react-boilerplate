@@ -1,5 +1,10 @@
 FROM node:6.3
-RUN mkdir /code
-WORKDIR /code
-ADD . /code/
+
+WORKDIR /project/client
+
+COPY package.json /project/client
 RUN npm install
+
+COPY . /project/client
+
+EXPOSE 3000
